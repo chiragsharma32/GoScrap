@@ -1,0 +1,23 @@
+.about_goscrap {
+    background-color: #f0efef;
+    padding: 60px 0;
+  }
+  
+  .abt-box {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .abt-box h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .cabt-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  

@@ -1,0 +1,57 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/about.css">
+{% comment %} <link rel="stylesheet" href="/static/css/services.css">  {% endcomment %}
+
+{% comment %} <link rel="stylesheet" href="{% static 'css/about.css' %}"> {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="about_goscrap">
+    <div class="abt-box">
+      <h2>About Us</h2>
+      <p>At XYZ Scrap Collection, we are committed to providing reliable and affordable scrap collection services to individuals and businesses in the area. With years of experience in the industry, we have built a reputation for delivering high-quality services that meet our clients' needs.</p>
+      <p>Our team of experienced professionals is equipped with the latest tools and equipment to ensure that we can handle any scrap collection project, big or small. We also pride ourselves on our commitment to sustainability, and we work hard to minimize our impact on the environment.</p>
+      <p>If you're looking for a scrap collection service you can trust, look no further than XYZ Scrap Collection. Contact us today to learn more about our services and how we can help you with your scrap collection needs.</p>
+    </div>
+</div>
+
+
+  <div class="service_container">
+    <h1>our services</h1>
+    <div class="grid">
+        <div class="services">
+            <img src="/static/serviceimg/shipping.svg" alt="">
+            <h2>Scrap collection</h2>
+            <p>we allow you to book an appoinmnet to sell your scarp online.</p>
+        </div>
+
+        <div class="services">
+            <img src="/static/serviceimg/price.svg" alt="">
+            <h2>Material pricing</h2>
+            <p>Know the price of the metal before selling it online on GoScrap.</p>
+        </div>
+
+        <div class="services">
+            <img src="/static/serviceimg/calculator.svg" alt="">
+            <h2>Scarp Calculator</h2>
+            <p>GoScrap help you to calculate the approximate price of your scarp.</p>
+        </div>
+
+        <div class="services">
+            <img src="/static/serviceimg/support.svg" alt="">
+            <h2>Customer support</h2>
+            <p>GoScrap provide customer support 24/7 and always there to help you.</p>
+        </div>
+
+    </div>
+
+</div>
+
+  {% endblock body %}

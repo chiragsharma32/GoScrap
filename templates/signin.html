@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/signin.css">
+{% endblock head %}
+
+
+{% block body  %}
+
+<div class="signin">
+<div class="text-center px-100px">
+    <main class="form-signin w-25 m-auto">
+      <form action='#' method="POST">
+        {% csrf_token %}
+        {% comment %} <img class="mt-5 mb-4" src="{% static 'images/brand.png'%}" alt=""> {% endcomment %}
+        <h1>Please SignIn</h1>
+    
+        <div class="form-floating mb-4">
+          <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="password" class="form-control" id="floatingPassword" name="pass1" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+    
+    
+        <button class="w-100 btn btn-lg btn-primary mb-4" type="submit">Sign in</button>
+        <p>Don't have an account ?<a href="/signup">signup</a> </p>
+        
+      </form>
+    </main>
+
+</div>
+
+</div>
+
+{% endblock body  %}

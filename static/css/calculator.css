@@ -1,0 +1,98 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    text-align: center;
+   font-weight: bold;
+    background-color: #06f95b;
+   
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+   
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  select,
+  input[type="number"],
+  button {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select:focus,
+  input[type="number"]:focus {
+    outline: none;
+    border-color: blue;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
+  button:active {
+    background-color: #26632f;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  p {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  /* Table styles */
+  table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Selected metal styles */
+  h3 {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  #selected-metal,
+  #selected-metal-weight,
+  #selected-metal-value {
+    font-weight: bold;
+  }
+  
