@@ -1,0 +1,15 @@
+.footer{
+    background-color: #e9ecef;
+    /* width: 100vh; */
+  }
+  
+  
+  .subscribe_btn{
+    background-color: #00df09;
+    border-radius: 5px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    color: black;
+    /* font-weight: bold; */
+  }
+  

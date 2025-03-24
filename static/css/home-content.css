@@ -1,0 +1,183 @@
+
+/* .content{
+  background-image: linear-gradient(270deg,#04d976 0,#00b8a5);
+  height: 350px;
+} */
+
+
+.goscrap img{
+
+  text-align: center;
+  /* width: 100%; */
+  /* height: 300px; */
+  margin-left: 350px;
+  margin-top: 30px;
+}
+
+
+
+/* .text {
+
+    font-size: 70px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: #d12323;
+    text-align: center;
+    margin-top: 20px;
+  
+  } */
+
+
+/* .text span{
+    color: black;
+     background-color: #0aa812;
+}
+   */
+.brand {
+    font-size: 70px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+
+  }
+  
+  .brand span {
+    color: #00df09;
+  }
+  
+  .pickup {
+    border: 4px solid rgb(199, 216, 218);
+    height: 600px;
+    width: 500px;
+    /* margin: 70px; */
+    margin-top: 50px;
+    margin-right: 150px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 10px #d3d6da;
+    float: right;
+  }
+  
+  .home-container {
+    justify-content: space-between;
+
+  }
+  
+  #txt1 {
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 650;
+    font-size: 22px;
+    margin: 20px;
+  
+  }
+  
+  #txt2 {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 25px;
+    font-weight: bold;
+  }
+  
+  .btn {
+    display: flex;
+    flex-direction: column;
+  
+  
+  }
+  
+  #btn1 {
+  
+    background-color: #00df09;
+    border: 2px solid #00df09;
+    border-radius: 8px;
+    height: 50px;
+    width: 400px;
+    margin-top: 30px;
+    margin-left: 52px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1px 1px 10px 10px #cdffcd;
+    cursor: pointer;
+  
+  }
+  
+  #btn1:hover {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    box-shadow: 1px 1px 10px 10px #d8ded8;
+  
+  }
+  
+  #btn2 {
+  
+    background-color: #00df09;
+    border: 2px solid #00df09;
+    border-radius: 8px;
+    height: 50px;
+    width: 400px;
+    margin-top: 30px;
+    margin-left: 52px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1px 1px 10px 10px #cdffcd;
+    cursor: pointer;
+  }
+  
+  #btn2:hover {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    box-shadow: 1px 1px 10px 10px #d8ded8;
+  }
+ 
+  .weight {
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+  }
+  
+  #txt3 {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  
+  .pickuptxt {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    margin-left: 150px;
+    /* margin: 97px -5px; */
+    /* padding: 10px 60px; */
+    position: absolute;
+  
+  }
+  
+  .pickuptxt span {
+    color: black;
+    background-color: #00df09;
+    /* border: 2px solid #00df09; */
+    font-size: larger;
+  }
+  
+  
+  
+ 
+  
+
+  
