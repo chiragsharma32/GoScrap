@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    .pickup-card {
+        transition: transform 0.2s;
+    }
+    .pickup-card:hover {
+        transform: translateY(-2px);
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+    .status-pending {
+        background-color: #fef3c7;
+        color: #92400e;
+    }
+    .status-confirmed {
+        background-color: #dbeafe;
+        color: #1e40af;
+    }
+    .status-completed {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+    .status-cancelled {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-white py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Pickup Requests</h1>
+            <p class="text-gray-600">View and manage all pickup requests</p>
+        </div>
+        
+        {% if pickups %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for pickup in pickups %}
+            <div class="bg-white rounded-xl shadow-lg p-6 pickup-card">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">{{ pickup.name }}</h3>
+                    <span class="status-badge status-{{ pickup.status }}">
+                        {{ pickup.get_status_display }}
+                    </span>
+                </div>
+                
+                <div class="space-y-2 text-sm text-gray-600 mb-4">
+                    <p><strong class="text-gray-900">Email:</strong> {{ pickup.email }}</p>
+                    <p><strong class="text-gray-900">Phone:</strong> {{ pickup.phone }}</p>
+                    <p><strong class="text-gray-900">Date:</strong> {{ pickup.pickup_date|date:"F d, Y" }}</p>
+                    <p><strong class="text-gray-900">Time:</strong> {{ pickup.pickup_time|time:"g:i A" }}</p>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="text-sm text-gray-600"><strong class="text-gray-900">Address:</strong></p>
+                    <p class="text-sm text-gray-700 mt-1">{{ pickup.pickup_address }}</p>
+                </div>
+                
+                <div class="text-xs text-gray-400">
+                    Requested: {{ pickup.created_at|date:"M d, Y g:i A" }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="bg-white rounded-xl shadow-lg p-12 text-center">
+            <p class="text-gray-600 text-lg">No pickup requests yet.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}

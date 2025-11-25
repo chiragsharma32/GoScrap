@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+
+# Environment variables
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tailwind build files (keep input.css, ignore output.css if you want to rebuild)
+# Uncomment the next line if you want to ignore the compiled CSS
+# static/css/output.css
+
+# Sensitive files - IMPORTANT: Keep API keys out of git
+# The settings.py file should have the placeholder, not the actual key
+# If you've added your real key, make sure to replace it with the placeholder before committing
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+
+
+
+
+
+
+# Large files
+*.sqlite3
+*.db
+*.zip
+*.pdf
+*.pptx
+
+# Large images
+*.psd
+*.ai

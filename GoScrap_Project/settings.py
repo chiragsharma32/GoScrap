@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'GoScrap',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +129,26 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  
 ]
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Gemini API Key
+# Get your API key from: https://makersuite.google.com/app/apikey
+# Set it in .env file as GEMINI_API_KEY or use the fallback below for local development
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDo15kDfXZMjXpG4iAzrMWdSVwXVEMtBZ0')
+
+# Supabase Configuration
+# Get these from your Supabase project settings: https://supabase.com/dashboard/project/_/settings/api
+SUPABASE_URL = os.getenv('SUPABASE_URL', '')
+SUPABASE_KEY = os.getenv('SUPABASE_ANON_KEY', '')
+SUPABASE_SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY', '')
+
+# Login redirect URL
+LOGIN_URL = '/signin'
+LOGIN_REDIRECT_URL = '/schedule_pickup'

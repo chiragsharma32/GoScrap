@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-white py-12 px-4">
+    <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">AI Scrap Analyzer</h1>
+            <p class="text-lg text-gray-600">Upload an image of your scrap material and get instant price estimation and material details powered by AI</p>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <div class="mb-6">
+                <label for="image-upload" class="block text-sm font-medium text-gray-700 mb-2">
+                    Upload Scrap Image
+                </label>
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-primary-500 transition-colors">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="image-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                                <span>Upload a file</span>
+                                <input id="image-upload" name="image" type="file" accept="image/*" class="sr-only" required>
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                    </div>
+                </div>
+                <div id="image-preview" class="mt-4 hidden">
+                    <img id="preview-img" src="" alt="Preview" class="max-w-full h-64 mx-auto rounded-lg shadow-md">
+                </div>
+            </div>
+            <button id="analyze-btn" type="button" class="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+                <span id="analyze-text">Analyze with AI</span>
+                <span id="analyze-loading" class="hidden">
+                    <svg class="animate-spin h-5 w-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Analyzing...
+                </span>
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="hidden bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Analysis Results</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Uploaded Image</h3>
+                    <img id="result-image" src="" alt="Analyzed image" class="w-full rounded-lg shadow-md">
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-primary-50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-600 mb-1">Material Type</p>
+                        <p id="material-type" class="text-xl font-bold text-primary-600"></p>
+                    </div>
+                    <div class="bg-primary-50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-600 mb-1">Estimated Price</p>
+                        <p id="estimated-price" class="text-xl font-bold text-primary-600"></p>
+                    </div>
+                    <div class="bg-primary-50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-600 mb-1">Total Estimated Value</p>
+                        <p id="total-value" class="text-xl font-bold text-primary-600"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Material Description</h3>
+                    <p id="material-description" class="text-gray-600 bg-gray-50 p-4 rounded-lg"></p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Condition</h3>
+                    <p id="condition" class="text-gray-600 bg-gray-50 p-4 rounded-lg"></p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Additional Notes</h3>
+                    <p id="additional-notes" class="text-gray-600 bg-gray-50 p-4 rounded-lg"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Section -->
+        <div id="error-section" class="hidden bg-red-50 border-l-4 border-red-400 p-4 rounded-lg mt-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p id="error-message" class="text-sm text-red-700"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const csrfTokenFromTemplate = "{{ csrf_token }}";
+    const imageInput = document.getElementById('image-upload');
+    const previewDiv = document.getElementById('image-preview');
+    const previewImg = document.getElementById('preview-img');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const analyzeText = document.getElementById('analyze-text');
+    const analyzeLoading = document.getElementById('analyze-loading');
+    const resultsSection = document.getElementById('results-section');
+    const errorSection = document.getElementById('error-section');
+    const errorMessage = document.getElementById('error-message');
+
+    // Image preview
+    imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                previewDiv.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+            analyzeBtn.disabled = false;
+        }
+    });
+
+    // Analyze button click
+    analyzeBtn.addEventListener('click', function() {
+        const file = imageInput.files[0];
+        if (!file) {
+            showError('Please select an image first');
+            return;
+        }
+
+        // Show loading state
+        analyzeBtn.disabled = true;
+        analyzeText.classList.add('hidden');
+        analyzeLoading.classList.remove('hidden');
+        resultsSection.classList.add('hidden');
+        errorSection.classList.add('hidden');
+
+        // Create form data
+        const formData = new FormData();
+        formData.append('image', file);
+
+        // Send to server
+        const csrfToken = getCookie('csrftoken') || csrfTokenFromTemplate;
+
+        fetch('/ai_analyze', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => {
+            const contentType = response.headers.get('content-type') || '';
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text || `Request failed with status ${response.status}`);
+                });
+            }
+            if (!contentType.includes('application/json')) {
+                return response.text().then(text => {
+                    throw new Error('Server returned unexpected response. Details: ' + text.slice(0, 200));
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                displayResults(data);
+            } else {
+                showError(data.error || 'Failed to analyze image');
+            }
+        })
+        .catch(error => {
+            showError('Error: ' + error.message);
+        })
+        .finally(() => {
+            analyzeBtn.disabled = false;
+            analyzeText.classList.remove('hidden');
+            analyzeLoading.classList.add('hidden');
+        });
+    });
+
+    function displayResults(data) {
+        const analysis = data.analysis;
+        
+        // Display image
+        if (data.image) {
+            document.getElementById('result-image').src = data.image;
+        }
+        
+        // Display analysis results
+        document.getElementById('material-type').textContent = analysis.material_type || 'Unknown';
+        document.getElementById('estimated-price').textContent = 
+            analysis.estimated_price_per_kg ? `₹${analysis.estimated_price_per_kg}/kg` : 'N/A';
+        document.getElementById('total-value').textContent = 
+            analysis.total_estimated_value ? `₹${analysis.total_estimated_value}` : 'N/A';
+        document.getElementById('material-description').textContent = 
+            analysis.material_description || 'No description available';
+        document.getElementById('condition').textContent = 
+            analysis.condition || 'Unknown';
+        document.getElementById('additional-notes').textContent = 
+            analysis.additional_notes || 'No additional notes';
+        
+        resultsSection.classList.remove('hidden');
+        errorSection.classList.add('hidden');
+    }
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorSection.classList.remove('hidden');
+        resultsSection.classList.add('hidden');
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script>
+{% endblock body %}
+
+
+
+
+
+
+
+

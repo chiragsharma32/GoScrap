@@ -1,162 +1,132 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/css/socialicon.css">
-<link rel="stylesheet" href="/static/css/home-content.css">
-<link rel="stylesheet" href="/static/css/why-us.css">
-<link rel="stylesheet" href="/static/css/work.css">
-
-
 {% endblock head %}
 
- {% block body  %}
+{% block body %}
+<div class="bg-gradient-to-br from-primary-50 to-white min-h-screen">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Sell your <span class="text-primary-600">recyclables</span><br>online with GOSCRAP
+                </h1>
+                <p class="text-xl text-gray-600 mb-8">
+                    Nice to see you! Start selling your scrap with GOSCRAP and wish to recycle more.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/schedule_pickup" class="bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors text-center">
+                        Schedule A Pickup
+                    </a>
+                    <a href="/ai_analyze" class="bg-white text-primary-600 border-2 border-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors text-center">
+                        AI Scrap Analyzer
+                    </a>
+                    <a href="#" class="bg-white text-primary-600 border-2 border-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors text-center">
+                        Check My Pickups
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center">
+                <img src="{% static 'homeimg/weight.webp' %}" alt="Weight scale" class="max-w-md w-full">
+            </div>
+        </div>
+    </section>
 
-{% comment %} <div class="content">
 
- <div class="brand">
-    <span>GO</span>SCRAP
- </div>
- <div class="text">
 
-    You Got <span>  scrap? </span>
-    <br> convert into <span>  cash </span> </br>
+    <!-- Why Choose Us Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/shipping.svg' %}" alt="Best Rates" class="w-16 h-16 mx-auto mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Best Rates</h3>
+                <p class="text-gray-600">We provide the best value for your scrap from our network of Recyclers.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/price.svg' %}" alt="Convenience" class="w-16 h-16 mx-auto mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Convenience</h3>
+                <p class="text-gray-600">Doorstep pickup according to user's convenient date and time.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/calculator.svg' %}" alt="Trust" class="w-16 h-16 mx-auto mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Trust</h3>
+                <p class="text-gray-600">Trained and Verified Pickup Staff with Smart Weighing Scale</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/support.svg' %}" alt="Calculate First" class="w-16 h-16 mx-auto mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Calculate First</h3>
+                <p class="text-gray-600">Scrap calculator help you to calculate the rate of your scrap first.</p>
+            </div>
+        </div>
+    </section>
 
- </div>
-</div> {% endcomment %}
 
-<div class="goscrap">
-    <img src="/static/Goscrap/logo.png" alt="">
+    <!-- How It Works Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">How It Works</h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Schedule a Pickup</h3>
+                    <p class="text-gray-600 text-lg">Scheduling a pickup on GoScrap is a fast and easy process. You can schedule a pickup time according to your convenience.</p>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <img src="{% static 'homeimg/schedule-bro.png' %}" alt="Schedule" class="max-w-md w-full">
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Pickup at Your Address</h3>
+                    <p class="text-gray-600 text-lg">On the day of the pickup, the GoScrap team of experienced professionals will visit your location. They'll assess the amount and type of scrap you have, and then load it onto their truck for transport to their facility for processing and recycling.</p>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <img src="{% static 'homeimg/shipping.png' %}" alt="Pickup" class="max-w-md w-full">
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Receive Payment</h3>
+                    <p class="text-gray-600 text-lg">Payment will be made on the spot after the materials have been weighed and inspected. In some cases, payment may be made by check or electronic transfer after the materials have been processed and sold.</p>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <img src="{% static 'homeimg/receipt-pana.png' %}" alt="Payment" class="max-w-md w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Social Media Section -->
+    <section class="container mx-auto px-4 py-16 text-center">
+        <p class="text-2xl font-bold text-gray-900 mb-8">FIND US ON SOCIAL MEDIA</p>
+        <div class="flex justify-center gap-6 flex-wrap">
+            <a href="#" class="hover:scale-110 transition-transform">
+                <img src="{% static 'contactimg/facebook-icon.png' %}" alt="Facebook" class="w-12 h-12">
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+                <img src="{% static 'contactimg/linkedin-icon.png' %}" alt="LinkedIn" class="w-12 h-12">
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+                <img src="{% static 'contactimg/instagram-icon.png' %}" alt="Instagram" class="w-12 h-12">
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+                <img src="{% static 'contactimg/twitter-icon.png' %}" alt="Twitter" class="w-12 h-12">
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+                <img src="{% static 'contactimg/whatsapp-icon.png' %}" alt="WhatsApp" class="w-12 h-12">
+            </a>
+        </div>
+    </section>
 </div>
-
-
-</div>
-<div class="home-container">
-
-    <div class="pickuptxt">
-        Sell your <span>recyclables</span> <br>online with GOSCRAP
-
-    </div>
-
-    
-
-    <div class="pickup">
-        <div id="txt1">
-            Nice to see you
-        </div>
-        <div id="txt2">
-            Start selling your scrap with GOSCRAP
-        </div>
-
-        <div class="weight">
-            <img src="/static/homeimg/weight.webp" alt="">
-        </div>
-        <div id="txt3">
-            wish to recycle more
-        </div>
-
-        <div class="btn">
-           <a href="/schedule_pickup"> <button id="btn1">Schedule A Pickup</button></a>
-           <a href=""><button id="btn2">Check My Pickups</button></a> 
-        </div>
-        
-    </div>
-
-
-</div>
-
-
-
-<div class="why-us">
-
-    <h1>Why choose us</h1>
-
-    <div class="grid">
-        <div class="why">
-            <img src="/static/serviceimg/shipping.svg" alt="">
-            <h2>Best Rates</h2>
-            <p>We provide the best value for your scrap from our network of Recyclers.</p>
-        </div>
-
-        <div class="why">
-            <img src="/static/serviceimg/price.svg" alt="">
-            <h2>Convenience</h2>
-            <p>Doorstep pickup according to user's convenient date and time.</p>
-        </div>
-
-        <div class="why">
-            <img src="/static/serviceimg/calculator.svg" alt="">
-            <h2>Trust</h2>
-            <p>Trained and Verified Pickup Staff with Smart Weighing Scale</p>
-        </div>
-
-        <div class="why">
-            <img src="/static/serviceimg/support.svg" alt="">
-            <h2>Calculate first</h2>
-            <p>Scrap calculator help you to calculate the rate of your scrab first.</p>
-        </div>
-
-    </div>
-
-
-
-
-</div>
-
-
-<h1>How it works</h1>
-<div class="work">
-    <div class="info">
-        <h3>Schedule a pickup </h3>
-        <p>Scheduling a pickup on a GoScrap is a fast and easy process. you can schedule a pickup time according to your convanience.</p>
-    </div>
-
-    <div class="pictorial">
-        <img src="/static/homeimg/schedule-bro.png" alt="">
-    </div>
-</div>
-
-<div class="work">
-
-    <div class="pictorial1">
-        <img src="/static/homeimg/shipping.png" alt="">
-    </div>
-    <div class="info1">
-        <h3>Pickup at your address </h3>
-        <p>On the day of the pickup, the Goscrap team of experienced professionals will visit to your location. They'll assess the amount and type of scrap you have, and then load it onto their truck for transport to their facility for processing and recycling.</p>
-    </div>
-
-    
-</div>
-
-<div class="work">
-    <div class="info2">
-        <h3>Receive payment </h3>
-        <p> payment will be made on the spot after the materials have been weighed and inspected. In some cases, payment may be made by check or electronic transfer after the materials have been processed and sold.</p>
-    </div>
-
-    <div class="pictorial2">
-        <img src="/static/homeimg/receipt-pana.png" alt="">
-    </div>
-</div>
-
-
-
-
-
-{% comment %} contact us section  {% endcomment %}
-
-<section id="social-media">
-    <div class="container-text-center">
-        <p>FIND US ON SOCIAL MEDIA </p>
-    </div>
-    <div class="social-icons text-center">
-        <a href="#"><img src="/static/contactimg/facebook-icon.png" alt=""></a>
-        <a href="#"><img src="/static/contactimg/linkedin-icon.png" alt=""></a>
-        <a href=""><img src="/static/contactimg/instagram-icon.png" alt=""></a>
-        <a href="#"><img src="/static/contactimg/twitter-icon.png" alt=""></a>
-        <a href="#"><img src="/static/contactimg/whatsapp-icon.png" alt=""></a>
-    </div>
-</section>
 
 
 

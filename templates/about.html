@@ -1,57 +1,49 @@
 
-
 {% extends 'base.html' %}
-
 {% load static %}
-{% block head %}
-<link rel="stylesheet" href="/static/css/about.css">
-{% comment %} <link rel="stylesheet" href="/static/css/services.css">  {% endcomment %}
 
-{% comment %} <link rel="stylesheet" href="{% static 'css/about.css' %}"> {% endcomment %}
-<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% block head %}
 {% endblock head %}
 
 {% block body %}
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-white py-12 px-4">
+    <!-- About Section -->
+    <section class="container mx-auto max-w-4xl mb-16">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center">About Us</h2>
+            <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                <p>At GoScrap, we are committed to providing reliable and affordable scrap collection services to individuals and businesses in the area. With years of experience in the industry, we have built a reputation for delivering high-quality services that meet our clients' needs.</p>
+                <p>Our team of experienced professionals is equipped with the latest tools and equipment to ensure that we can handle any scrap collection project, big or small. We also pride ourselves on our commitment to sustainability, and we work hard to minimize our impact on the environment.</p>
+                <p>If you're looking for a scrap collection service you can trust, look no further than GoScrap. Contact us today to learn more about our services and how we can help you with your scrap collection needs.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="about_goscrap">
-    <div class="abt-box">
-      <h2>About Us</h2>
-      <p>At XYZ Scrap Collection, we are committed to providing reliable and affordable scrap collection services to individuals and businesses in the area. With years of experience in the industry, we have built a reputation for delivering high-quality services that meet our clients' needs.</p>
-      <p>Our team of experienced professionals is equipped with the latest tools and equipment to ensure that we can handle any scrap collection project, big or small. We also pride ourselves on our commitment to sustainability, and we work hard to minimize our impact on the environment.</p>
-      <p>If you're looking for a scrap collection service you can trust, look no further than XYZ Scrap Collection. Contact us today to learn more about our services and how we can help you with your scrap collection needs.</p>
-    </div>
+    <!-- Services Section -->
+    <section class="container mx-auto max-w-6xl">
+        <h1 class="text-4xl font-bold text-center text-gray-900 mb-12">Our Services</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/shipping.svg' %}" alt="Scrap collection" class="w-16 h-16 mx-auto mb-4">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Scrap Collection</h2>
+                <p class="text-gray-600">We allow you to book an appointment to sell your scrap online.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/price.svg' %}" alt="Material pricing" class="w-16 h-16 mx-auto mb-4">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Material Pricing</h2>
+                <p class="text-gray-600">Know the price of the metal before selling it online on GoScrap.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/calculator.svg' %}" alt="Scrap Calculator" class="w-16 h-16 mx-auto mb-4">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Scrap Calculator</h2>
+                <p class="text-gray-600">GoScrap help you to calculate the approximate price of your scrap.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
+                <img src="{% static 'serviceimg/support.svg' %}" alt="Customer support" class="w-16 h-16 mx-auto mb-4">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Customer Support</h2>
+                <p class="text-gray-600">GoScrap provide customer support 24/7 and always there to help you.</p>
+            </div>
+        </div>
+    </section>
 </div>
-
-
-  <div class="service_container">
-    <h1>our services</h1>
-    <div class="grid">
-        <div class="services">
-            <img src="/static/serviceimg/shipping.svg" alt="">
-            <h2>Scrap collection</h2>
-            <p>we allow you to book an appoinmnet to sell your scarp online.</p>
-        </div>
-
-        <div class="services">
-            <img src="/static/serviceimg/price.svg" alt="">
-            <h2>Material pricing</h2>
-            <p>Know the price of the metal before selling it online on GoScrap.</p>
-        </div>
-
-        <div class="services">
-            <img src="/static/serviceimg/calculator.svg" alt="">
-            <h2>Scarp Calculator</h2>
-            <p>GoScrap help you to calculate the approximate price of your scarp.</p>
-        </div>
-
-        <div class="services">
-            <img src="/static/serviceimg/support.svg" alt="">
-            <h2>Customer support</h2>
-            <p>GoScrap provide customer support 24/7 and always there to help you.</p>
-        </div>
-
-    </div>
-
-</div>
-
-  {% endblock body %}
+{% endblock body %}

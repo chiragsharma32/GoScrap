@@ -1,97 +1,118 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
-  {% block head %}
-  
-  
-  <link rel="stylesheet" href="/static/css/calculator.css">
+{% load static %}
 
-  {% endblock head %}
- 
+{% block head %}
+{% endblock head %}
 
-  {% block body %}
+{% block body %}
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-white py-12 px-4">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-8">Scrap Price Calculator</h2>
+        
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <form class="space-y-6">
+                <div>
+                    <label for="scrap-type" class="block text-sm font-medium text-gray-700 mb-2">Select metal type:</label>
+                    <select id="scrap-type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none transition">
+                        <option value="aluminum">Aluminum</option>
+                        <option value="brass">Brass</option>
+                        <option value="copper">Copper</option>
+                        <option value="stainless-steel">Stainless Steel</option>
+                        <option value="paper">Paper</option>
+                        <option value="cardboard">Cardboard</option>
+                        <option value="plastic">Plastic</option>
+                        <option value="iron">Iron</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="weight" class="block text-sm font-medium text-gray-700 mb-2">Enter weight (in Kg):</label>
+                    <input type="number" id="weight" step="0.01" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none transition">
+                </div>
+                <div>
+                    <label for="additional-type" class="block text-sm font-medium text-gray-700 mb-2">Additional fees:</label>
+                    <select id="additional-type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none transition">
+                        <option value="none">None</option>
+                        <option value="hazardous">Hazardous materials (₹0.25/Kg)</option>
+                        <option value="large-quantity">Large quantities (₹0.50/Kg)</option>
+                    </select>
+                </div>
+                <button type="button" id="calculate-btn" class="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">Calculate</button>
+            </form>
+        </div>
 
-  
-    <h3>Scrap Price Calculator</h3o=1>
-   
-    <form>
-      <label for="scrap-type">Select metal type:</label>
-      <select id="scrap-type">
-        <option value="aluminum">Aluminum</option>
-        <option value="brass">Brass</option>
-        <option value="copper">Copper</option>
-        <option value="stainless-steel">Stainless Steel</option>
-        <option value="paper">Paper</option>
-        <option value="cardboard">Cardboard</option>
-        <option value="plastic">Plastic</option>
-        <option value="iron">Iron</option>
-      </select>
-      <br>
-      <label for="weight">Enter weight (in Kg):</label>
-      <input type="number" id="weight" step="0.01">
-      <br>
-      <label for="additional-type">Additional fees:</label>
-      <select id="additional-type">
-        <option value="none">None</option>
-        <option value="hazardous">Hazardous materials (₹0.25/Kg)</option>
-        <option value="large-quantity">Large quantities (₹0.50/Kg)</option>
-      </select>
-      <br>
-      <button type="button" id="calculate-btn">Calculate</button>
-    </form>
-  
-    <h2>Results</h2>
-    <p>Total price: <span id="total-price">₹0.00</span></p>
-    <p>Additional price: <span id="additional-price">₹0.00</span></p>
-    <h3>Total weight and value by Scrap type</h3>
-    <table>
-      <tr>
-        <th>Scrap Type</th>
-        <th>Total Weight</th>
-        <th>Total Value</th>
-      </tr>
-      <tr>
-        <td>Aluminum</td>
-        <td><span id="aluminum-weight">0 Kg</span></td>
-        <td><span id="aluminum-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Brass</td>
-        <td><span id="brass-weight">0 Kg</span></td>
-        <td><span id="brass-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Copper</td>
-        <td><span id="copper-weight">0 Kg</span></td>
-        <td><span id="copper-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Stainless Steel</td>
-        <td><span id="stainless-steel-weight">0 Kg</span></td>
-        <td><span id="stainless-steel-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Paper</td>
-        <td><span id="paper-weight">0 Kg</span></td>
-        <td><span id="paper-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Cardboard</td>
-        <td><span id="cardboard-weight">0 Kg</span></td>
-        <td><span id="cardboard-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Plastic</td>
-        <td><span id="plastic-weight">0 Kg</span></td>
-        <td><span id="plastic-value">₹0.00</span></td>
-      </tr>
-      <tr>
-        <td>Iron</td>
-        <td><span id="iron-weight">0 Kg</span></td>
-        <td><span id="iron-value">₹0.00</span></td>
-      </tr>
-    </table>
-    <script src="/static/javascript/calculator.js"></script>
-  </body>
-    {% endblock body %}
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Results</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-primary-50 p-4 rounded-lg">
+                    <p class="text-gray-600 mb-1">Total price:</p>
+                    <p class="text-2xl font-bold text-primary-600"><span id="total-price">₹0.00</span></p>
+                </div>
+                <div class="bg-primary-50 p-4 rounded-lg">
+                    <p class="text-gray-600 mb-1">Additional price:</p>
+                    <p class="text-2xl font-bold text-primary-600"><span id="additional-price">₹0.00</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Total weight and value by Scrap type</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-primary-600 text-white">
+                            <th class="px-4 py-3 text-left border border-gray-300">Scrap Type</th>
+                            <th class="px-4 py-3 text-left border border-gray-300">Total Weight</th>
+                            <th class="px-4 py-3 text-left border border-gray-300">Total Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Aluminum</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="aluminum-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="aluminum-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Brass</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="brass-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="brass-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Copper</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="copper-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="copper-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Stainless Steel</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="stainless-steel-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="stainless-steel-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Paper</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="paper-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="paper-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Cardboard</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="cardboard-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="cardboard-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Plastic</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="plastic-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="plastic-value">₹0.00</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 border border-gray-300">Iron</td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="iron-weight">0 Kg</span></td>
+                            <td class="px-4 py-3 border border-gray-300"><span id="iron-value">₹0.00</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'javascript/calculator.js' %}"></script>
+{% endblock body %}
 
    
