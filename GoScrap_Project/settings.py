@@ -121,11 +121,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Gemini API Key
-GEMINI_API_KEY = "AIzaSyDo15kDfXZMjXpG4iAzrMWdSVwXVEMtBZ0"
+# Get your API key from: https://makersuite.google.com/app/apikey
+# Set it in .env file as GEMINI_API_KEY or use the fallback below for local development
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDo15kDfXZMjXpG4iAzrMWdSVwXVEMtBZ0')
-
 
 # Supabase Configuration
 
